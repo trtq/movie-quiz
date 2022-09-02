@@ -6,7 +6,10 @@ import { TAboutScreenProps } from './types';
 
 export const AboutScreen = observer(({ navigation }: TAboutScreenProps) => {
   const {
-    gameStore: { score, upScore },
+    gameStore: {
+      gameState: { score },
+      upScore,
+    },
   } = useStore();
 
   return (
