@@ -1,4 +1,4 @@
-import { THEME } from '../../themes/types';
+import { THEME } from '@src/themes/types';
 
 export type TGameState = {
   score: number;

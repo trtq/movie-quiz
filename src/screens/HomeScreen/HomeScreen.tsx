@@ -1,8 +1,8 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { Button, Text } from 'react-native';
-import { SCREENS } from '../../router/types';
-import { useStore } from '../../stores/useStore';
+import { SCREENS } from '@src/router/types';
+import { useStore } from '@src/stores/useStore';
 import { Container } from './layouts';
 import { THomeScreenProps } from './types';
 

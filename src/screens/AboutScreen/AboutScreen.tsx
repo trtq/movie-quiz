@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 import { Button, SafeAreaView, Text } from 'react-native';
-import { useStore } from '../../stores/useStore';
+import { useStore } from '@src/stores/useStore';
 import { TAboutScreenProps } from './types';
 
 export const AboutScreen = observer(({ navigation }: TAboutScreenProps) => {

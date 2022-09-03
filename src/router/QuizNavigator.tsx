@@ -1,8 +1,8 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SCREENS, TQuizNavigatorStackParamList } from './types';
-import { AboutScreen } from '../screens/AboutScreen/AboutScreen';
-import { HomeScreen } from '../screens/HomeScreen/HomeScreen';
+import { AboutScreen } from '@src/screens/AboutScreen/AboutScreen';
+import { HomeScreen } from '@src/screens/HomeScreen/HomeScreen';
 
 const Stack = createNativeStackNavigator<TQuizNavigatorStackParamList>();
 

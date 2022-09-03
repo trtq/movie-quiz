@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import { TThemedProps } from '../../themes/types';
+import { TThemedProps } from '@src/themes/types';
 
 export const Container = styled.SafeAreaView<TThemedProps<{}>>`
   width: 100%;

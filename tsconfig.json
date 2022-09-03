@@ -4,6 +4,12 @@
     "skipLibCheck": true,
     "types": [
       "@types/styled-components-react-native"
-    ]
-  }
+    ],
+    "baseUrl": "./",
+    "paths": {
+      "@src/*": ["src", "src/*"],
+      "@assets/*": ["assets", "assets/*"]
+    }
+  },
+  "exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js"]
 }
