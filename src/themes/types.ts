@@ -8,6 +8,11 @@ export enum THEME {
 export type TTheme = {
   dark: boolean;
   background: string;
+  textOnBackground: string;
+  primary: string;
+  textOnPrimary: string;
+  border: string;
+  disabled: string;
 };
 
 export type TThemes = {

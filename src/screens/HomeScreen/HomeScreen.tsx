@@ -1,27 +1,40 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
-import { Button, Text } from 'react-native';
 import { SCREENS } from '@src/router/types';
 import { useStore } from '@src/stores/useStore';
-import { Container } from './layouts';
+import { BackgroundImage, Container, ContGameContainer, Logo, SafeWrap, ThemeButtonContainer } from './layouts';
 import { THomeScreenProps } from './types';
+import { SafeAreaView } from 'react-native';
+import { SwapThemeButton } from '@src/components/SwapThemeButton/SwapThemeButton';
+import { MenuButton } from '@src/components/MenuButton/MenuButton';
 
 export const HomeScreen = observer(({ navigation }: THomeScreenProps) => {
   const {
     gameStore: {
-      gameState: { score },
-      swapTheme,
-      upScore,
+      gameState: { continuable },
     },
   } = useStore();
 
   return (
     <Container>
-      <Button title="swap theme" onPress={swapTheme} />
-      <Text>home Screen</Text>
-      <Button title="add to score" onPress={upScore} />
-      <Text>current score: {score}</Text>
-      <Button title="to about screen" onPress={() => navigation.navigate(SCREENS.About)} />
+      <BackgroundImage />
+      <SafeAreaView>
+        <SafeWrap>
+          <Logo />
+          <ContGameContainer>
+            <MenuButton disabled={!continuable} onPress={() => navigation.navigate(SCREENS.Game)}>
+              Continue
+            </MenuButton>
+          </ContGameContainer>
+          <ContGameContainer>
+            <MenuButton onPress={() => navigation.navigate(SCREENS.Difficulty)}>New game</MenuButton>
+          </ContGameContainer>
+          <MenuButton onPress={() => navigation.navigate(SCREENS.About)}>About</MenuButton>
+          <ThemeButtonContainer>
+            <SwapThemeButton />
+          </ThemeButtonContainer>
+        </SafeWrap>
+      </SafeAreaView>
     </Container>
   );
 });

@@ -7,6 +7,7 @@ export function createGameStore() {
   return {
     gameState: {
       score: 0,
+      continuable: false,
       theme: THEME.Light,
     } as TGameState,
 
@@ -30,9 +31,12 @@ export function createGameStore() {
         });
     },
 
-    saveCurrentSettings() {
+    saveCurrentSettings(continuableNow?: boolean) {
       // serialises and saves the game state to async storage
       // because we want the ability to continue at any point without explicit saving by the user, this is called a lot
+      if (continuableNow) {
+        this.gameState.continuable = true;
+      }
       const newSettings = JSON.stringify(this.gameState);
       AsyncStorage.setItem('gameState', newSettings).catch(e => {
         console.log('could not write in async storage', e);
