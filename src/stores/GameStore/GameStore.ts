@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { runInAction } from 'mobx';
 import { THEME } from '@src/themes/types';
 import { TGameState } from './types';
+import { DIFFICULTY } from '@src/difficulties/types';
 
 export function createGameStore() {
   return {
@@ -9,10 +10,16 @@ export function createGameStore() {
       score: 0,
       continuable: false,
       theme: THEME.Light,
+      difficuty: DIFFICULTY.Normal,
     } as TGameState,
 
     upScore() {
       this.gameState.score++;
+      this.saveCurrentSettings();
+    },
+
+    changeDifficulty(d: DIFFICULTY) {
+      this.gameState.difficuty = d;
       this.saveCurrentSettings();
     },
 
@@ -37,6 +44,20 @@ export function createGameStore() {
       if (continuableNow) {
         this.gameState.continuable = true;
       }
+      const newSettings = JSON.stringify(this.gameState);
+      AsyncStorage.setItem('gameState', newSettings).catch(e => {
+        console.log('could not write in async storage', e);
+      });
+    },
+
+    newGame() {
+      // resets all fields that don't save between different games
+      this.gameState = {
+        difficuty: this.gameState.difficuty,
+        score: 0,
+        continuable: false,
+        theme: this.gameState.theme,
+      };
       const newSettings = JSON.stringify(this.gameState);
       AsyncStorage.setItem('gameState', newSettings).catch(e => {
         console.log('could not write in async storage', e);
