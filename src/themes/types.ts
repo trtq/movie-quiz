@@ -13,6 +13,7 @@ export type TTheme = {
   textOnPrimary: string;
   border: string;
   disabled: string;
+  highScore: string;
 };
 
 export type TThemes = {

@@ -9,6 +9,7 @@ export const themes: TThemes = {
     textOnPrimary: '#010111',
     border: '#c9c9ff',
     disabled: '#737478',
+    highScore: '#927b00',
   },
   [THEME.Dark]: {
     dark: true,
@@ -18,5 +19,6 @@ export const themes: TThemes = {
     textOnPrimary: '#010111',
     border: '#010111',
     disabled: '#737478',
+    highScore: 'gold',
   },
 };
