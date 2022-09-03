@@ -10,6 +10,10 @@ export const themes: TThemes = {
     border: '#c9c9ff',
     disabled: '#737478',
     highScore: '#927b00',
+    correctAnswer: '#11bd0d',
+    incorrectAnswer: '#d10707',
+    heartColor: '#d70083',
+    crossColor: '#d70000',
   },
   [THEME.Dark]: {
     dark: true,
@@ -20,5 +24,9 @@ export const themes: TThemes = {
     border: '#010111',
     disabled: '#737478',
     highScore: 'gold',
+    correctAnswer: '#11bd0d',
+    incorrectAnswer: '#d10707',
+    heartColor: '#d70083',
+    crossColor: '#d70000',
   },
 };

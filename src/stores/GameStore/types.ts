@@ -6,4 +6,6 @@ export type TGameState = {
   theme: THEME;
   continuable: boolean;
   difficuty: DIFFICULTY;
+  highScore: number;
+  health: number;
 };

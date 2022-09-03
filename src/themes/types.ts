@@ -14,6 +14,10 @@ export type TTheme = {
   border: string;
   disabled: string;
   highScore: string;
+  correctAnswer: string;
+  incorrectAnswer: string;
+  heartColor: string;
+  crossColor: string;
 };
 
 export type TThemes = {

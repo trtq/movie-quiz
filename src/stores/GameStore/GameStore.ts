@@ -1,8 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { runInAction } from 'mobx';
+import { DIFFICULTY } from '@src/difficulties/types';
+import { DIFFICULTIES } from '@src/difficulties/difficulties';
 import { THEME } from '@src/themes/types';
 import { TGameState } from './types';
-import { DIFFICULTY } from '@src/difficulties/types';
 
 export function createGameStore() {
   return {
@@ -11,10 +12,15 @@ export function createGameStore() {
       continuable: false,
       theme: THEME.Light,
       difficuty: DIFFICULTY.Normal,
+      health: DIFFICULTIES[DIFFICULTY.Normal].health,
+      highScore: 0,
     } as TGameState,
 
     upScore() {
       this.gameState.score++;
+      if (this.gameState.score > this.gameState.highScore) {
+        this.gameState.highScore = this.gameState.score;
+      }
       this.saveCurrentSettings();
     },
 
@@ -50,6 +56,11 @@ export function createGameStore() {
       });
     },
 
+    recieveDamage() {
+      this.gameState.health--;
+      this.saveCurrentSettings(true);
+    },
+
     newGame() {
       // resets all fields that don't save between different games
       this.gameState = {
@@ -57,6 +68,8 @@ export function createGameStore() {
         score: 0,
         continuable: false,
         theme: this.gameState.theme,
+        highScore: this.gameState.highScore,
+        health: DIFFICULTIES[this.gameState.difficuty].health,
       };
       const newSettings = JSON.stringify(this.gameState);
       AsyncStorage.setItem('gameState', newSettings).catch(e => {
