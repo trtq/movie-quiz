@@ -18,6 +18,7 @@ export type TTheme = {
   incorrectAnswer: string;
   heartColor: string;
   crossColor: string;
+  textOnActiveAnswer: string;
 };
 
 export type TThemes = {

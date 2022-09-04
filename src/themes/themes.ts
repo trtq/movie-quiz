@@ -14,6 +14,7 @@ export const themes: TThemes = {
     incorrectAnswer: '#d10707',
     heartColor: '#d70083',
     crossColor: '#d70000',
+    textOnActiveAnswer: 'white',
   },
   [THEME.Dark]: {
     dark: true,
@@ -28,5 +29,6 @@ export const themes: TThemes = {
     incorrectAnswer: '#d10707',
     heartColor: '#d70083',
     crossColor: '#d70000',
+    textOnActiveAnswer: 'white',
   },
 };

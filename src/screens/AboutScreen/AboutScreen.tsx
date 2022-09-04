@@ -1,8 +1,8 @@
 import React from 'react';
 import { Linking, SafeAreaView } from 'react-native';
-import { scale } from 'react-native-size-matters';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import { scale } from 'react-native-size-matters/extend';
 import { GoBackButton } from '@src/components/GoBackButton/GoBackButton';
 import { MenuButton } from '@src/components/MenuButton/MenuButton';
 import {
