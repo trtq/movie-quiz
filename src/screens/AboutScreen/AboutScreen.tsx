@@ -30,10 +30,11 @@ export const AboutScreen = ({ navigation }: TAboutScreenProps) => (
         </GoBackContainer>
         <InfoWrap>
           <InfoText>
-            <TextHighlight>MovieQuiz</TextHighlight> is an app designed to showcase the results of work with the entire
-            pipeline of react-native app developement.
+            <TextHighlight>MovieQuiz</TextHighlight> is a game that tests your knowledge of movies. Questions get
+            generated automatically, so you can play forever (even if some answers don't really make sense).{'\n'}Made
+            in React Native.
           </InfoText>
-          <InfoText>Infromation about technologies used is available on github.</InfoText>
+          <InfoText>Infromation about technologies used is available on my github.</InfoText>
           <MenuButton onPress={() => Linking.openURL('https://github.com/trtq/movie-quiz')}>
             Source code <FontAwesome5 name="github" size={scale(20)} />
           </MenuButton>
