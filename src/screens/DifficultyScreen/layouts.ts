@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 import { scale, verticalScale } from 'react-native-size-matters/extend';
-import { TThemedProps } from '@src/themes/types';
+import { TThemedProps } from '@src/utils/themes/types';
 
 export const Container = styled.View<TThemedProps<{}>>`
   width: 100%;

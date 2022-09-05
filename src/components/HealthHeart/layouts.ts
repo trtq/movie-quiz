@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 import { scale } from 'react-native-size-matters/extend';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Animated from 'react-native-reanimated';
-import { TThemedProps } from '@src/themes/types';
+import { TThemedProps } from '@src/utils/themes/types';
 
 export const heartSize = scale(25);
 

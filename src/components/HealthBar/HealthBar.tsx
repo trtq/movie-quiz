@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite';
 import React, { useMemo } from 'react';
 import { useStore } from '@src/stores/useStore';
 import { HealthHeart } from '@src/components/HealthHeart/HealthHeart';
-import { DIFFICULTIES } from '@src/difficulties/difficulties';
+import { DIFFICULTIES } from '@src/utils/difficulties/difficulties';
 import { Container, HeartContainer } from './layouts';
 
 // This block shows how much health you have left

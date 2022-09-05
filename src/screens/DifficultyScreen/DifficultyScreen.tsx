@@ -8,7 +8,7 @@ import { SCREENS } from '@src/router/types';
 import { useStore } from '@src/stores/useStore';
 import { TDifficultyScreenProps } from './types';
 import { Container, SafeWrap, GoBackContainer, TitleText, ButtonWrap, ThemeButtonContainer } from './layouts';
-import { DIFFICULTY } from '@src/difficulties/types';
+import { DIFFICULTY } from '@src/utils/difficulties/types';
 
 export const DifficultyScreen = observer(({ navigation }: TDifficultyScreenProps) => {
   const {

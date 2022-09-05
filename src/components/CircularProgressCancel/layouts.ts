@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { scale } from 'react-native-size-matters/extend';
-import { TThemedProps } from '@src/themes/types';
+import { TThemedProps } from '@src/utils/themes/types';
 
 export const CircleWrap = styled.View`
   transform: rotate(-90deg);

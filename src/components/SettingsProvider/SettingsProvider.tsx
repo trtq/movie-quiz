@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite';
 import React, { useEffect } from 'react';
 import { StatusBar, Platform } from 'react-native';
 import { useStore } from '@src/stores/useStore';
-import { themes } from '@src/themes/themes';
+import { themes } from '@src/utils/themes/themes';
 import { ThemeProvider } from 'styled-components';
 
 // a wrapper that reads AsyncStorage info at the point of entrance

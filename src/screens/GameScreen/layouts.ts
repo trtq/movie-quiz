@@ -4,7 +4,7 @@ import Animated from 'react-native-reanimated';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { scale, verticalScale } from 'react-native-size-matters/extend';
 import FastImage from 'react-native-fast-image';
-import { TThemedProps } from '@src/themes/types';
+import { TThemedProps } from '@src/utils/themes/types';
 
 const AnimatedFontAwesome = Animated.createAnimatedComponent(FontAwesome);
 

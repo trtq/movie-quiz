@@ -1,5 +1,5 @@
-import { DIFFICULTY } from '@src/difficulties/types';
-import { THEME } from '@src/themes/types';
+import { DIFFICULTY } from '@src/utils/difficulties/types';
+import { THEME } from '@src/utils/themes/types';
 
 export type TGameState = {
   score: number;

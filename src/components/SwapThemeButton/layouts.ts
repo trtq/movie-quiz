@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { verticalScale } from 'react-native-size-matters/extend';
-import { TThemedProps } from '@src/themes/types';
+import { TThemedProps } from '@src/utils/themes/types';
 
 export const ThemeButtonContainer = styled.TouchableOpacity<TThemedProps<{}>>`
   width: ${verticalScale(30)}px;

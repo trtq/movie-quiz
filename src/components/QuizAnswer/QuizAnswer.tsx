@@ -1,4 +1,4 @@
-import { TTheme } from '@src/themes/types';
+import { TTheme } from '@src/utils/themes/types';
 import React, { useCallback, useContext, useState } from 'react';
 import {
   Easing,

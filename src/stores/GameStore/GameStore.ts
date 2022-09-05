@@ -1,8 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { runInAction } from 'mobx';
-import { DIFFICULTY } from '@src/difficulties/types';
-import { DIFFICULTIES } from '@src/difficulties/difficulties';
-import { THEME } from '@src/themes/types';
+import { DIFFICULTY } from '@src/utils/difficulties/types';
+import { DIFFICULTIES } from '@src/utils/difficulties/difficulties';
+import { THEME } from '@src/utils/themes/types';
 import { TGameState } from './types';
 
 export function createGameStore() {

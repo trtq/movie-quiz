@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 import Animated from 'react-native-reanimated';
 import { scale, verticalScale } from 'react-native-size-matters/extend';
 import Svg from 'react-native-svg';
-import { TThemedProps } from '@src/themes/types';
+import { TThemedProps } from '@src/utils/themes/types';
 import { TResultSheenProps } from './types';
 
 const answerWidth = Math.min(verticalScale(358), scale(358));
