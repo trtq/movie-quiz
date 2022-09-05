@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
-import Animated, {
+import {
   Easing,
+  FadeIn,
   interpolate,
+  PinwheelOut,
   useAnimatedStyle,
   useSharedValue,
   withRepeat,
@@ -9,15 +11,12 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useTiming } from 'react-native-redash';
 import { MenuButton } from '@src/components/MenuButton/MenuButton';
-import { ErrorBlock, ErrorText, LoadingMark } from './layouts';
+import { ErrorBlock, ErrorText, LoadingContainer, LoadingMark } from './layouts';
 import { TLoadingProps } from './types';
 
 // a rotating circle that appears when loadup of the new questions takes a while
 // on showError===true an error fades in
-export const Loading = ({ onAbandon, active, showError }: TLoadingProps) => {
-  const opacity = useTiming(active, { duration: 300 });
-  const opacityStyle = useAnimatedStyle(() => ({ opacity: opacity.value }));
-
+export const Loading = ({ onAbandon, showError }: TLoadingProps) => {
   const errorOpacity = useTiming(showError, { duration: 300 });
   const errorStyle = useAnimatedStyle(() => ({ opacity: errorOpacity.value }));
 
@@ -32,12 +31,12 @@ export const Loading = ({ onAbandon, active, showError }: TLoadingProps) => {
   });
 
   return (
-    <Animated.View style={opacityStyle}>
-      <LoadingMark style={loadStyle} />
+    <LoadingContainer>
+      <LoadingMark entering={FadeIn.duration(700)} exiting={PinwheelOut.duration(300)} style={loadStyle} />
       <ErrorBlock style={errorStyle}>
         <ErrorText>It seems that TMDB can't be reached</ErrorText>
         <MenuButton onPress={onAbandon}>Abandon</MenuButton>
       </ErrorBlock>
-    </Animated.View>
+    </LoadingContainer>
   );
 };

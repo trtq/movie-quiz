@@ -5,6 +5,9 @@ import { DIFFICULTIES } from '@src/utils/difficulties/difficulties';
 import { THEME } from '@src/utils/themes/types';
 import { TGameState } from './types';
 import { TQuestion } from '@src/screens/GameScreen/types';
+import { generateQuestion } from '@src/utils/generateQuestion';
+import FastImage from 'react-native-fast-image';
+import { PICTURE_URL_ROOT } from '@env';
 
 export function createGameStore() {
   return {
@@ -31,12 +34,6 @@ export function createGameStore() {
 
     changeDifficulty(d: DIFFICULTY) {
       this.gameState.difficuty = d;
-      this.saveCurrentSettings();
-    },
-
-    swapQuestions() {
-      this.gameState.question = this.gameState.nextQuestion;
-      this.gameState.nextQuestion = null;
       this.saveCurrentSettings();
     },
 
@@ -97,10 +94,80 @@ export function createGameStore() {
         continuable: false,
         theme: this.gameState.theme,
       };
+      this.aborter = new AbortController();
       const newSettings = JSON.stringify(this.gameState);
       AsyncStorage.setItem('gameState', newSettings).catch(e => {
         console.log('could not write in async storage', e);
       });
+      this.loadQuestion();
+    },
+
+    numberOfLoads: 0,
+    loadTimer: null as ReturnType<typeof setTimeout> | null,
+    aborter: new AbortController(),
+    // this downloads a question. If we currently already show a question on the screen, it saves it for later
+    // if we don't it puts it straight on the screen
+    loadQuestion() {
+      const { difficuty } = this.gameState;
+      generateQuestion(difficuty)
+        .then(value => {
+          runInAction(() => {
+            if (value?.id) {
+              this.numberOfLoads = 0;
+              if (this.gameState.question) {
+                this.gameState.nextQuestion = value;
+                FastImage.preload([{ uri: `${PICTURE_URL_ROOT}${value.picture}` }]);
+                this.saveCurrentSettings(true);
+              } else {
+                this.gameState.question = value;
+                this.saveCurrentSettings(true);
+                this.loadQuestion();
+              }
+            } else {
+              if (!this?.aborter?.signal?.aborted) {
+                this.loadTimer = setTimeout(() => {
+                  runInAction(() => {
+                    // once numberOfLoads hits a certain threashold we tell the user that something is probably broken
+                    this.numberOfLoads++;
+                    this.loadQuestion();
+                  });
+                }, 2000);
+              }
+            }
+          });
+        })
+        .catch(() => {
+          if (!this?.aborter?.signal?.aborted) {
+            runInAction(() => {
+              this.loadTimer = setTimeout(() => {
+                runInAction(() => {
+                  this.numberOfLoads++;
+                });
+              }, 2000);
+            });
+          }
+        });
+    },
+
+    // either puts a preloaded question onto the screen, or removes all questions at all (and shows loading screen)
+    loadNextQuestion() {
+      if (this.gameState.nextQuestion) {
+        this.gameState.question = this.gameState.nextQuestion;
+        this.gameState.nextQuestion = null;
+        this.saveCurrentSettings();
+      } else {
+        this.gameState.question = null;
+      }
+      this.loadQuestion();
+    },
+
+    // cleans up the loop in loadQuestion. called in <Game /> on unmount
+    cleanUpLoadingQuestions() {
+      this.numberOfLoads = 0;
+      if (this.loadTimer) {
+        clearTimeout(this.loadTimer);
+      }
+      this.aborter.abort();
     },
   };
 }
