@@ -55,22 +55,27 @@ export const Game = observer(({ onHome }: TGameProps) => {
 
   // triggers on the press of a replay button on a game over screen
   // resets animations and triggers newGame() wich resets the state too
+  const [restartTimeout, setRestartTimeout] = useState<null | ReturnType<typeof setTimeout>>(null);
+  const [afterLossLoad, setAfterLossLoad] = useState(false);
   const onRestart = useCallback(() => {
+    setAfterLossLoad(true);
     setIsGameOver(false);
     newGame();
+    setRestartTimeout(setTimeout(() => setAfterLossLoad(false), 1000));
   }, [newGame]);
 
   // here we ensure that all the calls get cleaned up when we leave this screen
   useEffect(() => {
     return () => {
       if (reactionTimeout) clearTimeout(reactionTimeout);
+      if (restartTimeout) clearTimeout(restartTimeout);
       cleanUpLoadingQuestions();
     };
-  }, [cleanUpLoadingQuestions, reactionTimeout]);
+  }, [cleanUpLoadingQuestions, reactionTimeout, restartTimeout]);
 
   if (isGameOver) return <GameOver onRestart={onRestart} />;
 
-  if (!question) return <Loading showError={numberOfLoads > 5} onAbandon={onHome} />;
+  if (!question || afterLossLoad) return <Loading showError={numberOfLoads > 5} onAbandon={onHome} />;
 
   return (
     <QuizQuestion
