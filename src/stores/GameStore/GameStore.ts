@@ -142,6 +142,7 @@ export function createGameStore() {
               this.loadTimer = setTimeout(() => {
                 runInAction(() => {
                   this.numberOfLoads++;
+                  this.loadQuestion();
                 });
               }, 2000);
             });
@@ -158,6 +159,7 @@ export function createGameStore() {
       } else {
         this.gameState.question = null;
       }
+      this.aborter = new AbortController();
       this.loadQuestion();
     },
 
