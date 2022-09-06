@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import Animated from 'react-native-reanimated';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import { verticalScale, scale } from 'react-native-size-matters/extend';
+import { verticalScale } from 'react-native-size-matters/extend';
 import { TThemedProps } from '@src/utils/themes/types';
 
 export const QuizWrap = styled(Animated.View)`
@@ -25,11 +25,6 @@ export const ReplayButtonContainer = styled.TouchableOpacity<TThemedProps<{}>>`
   justify-content: center;
   align-items: center;
   margin-top: ${verticalScale(20)}px;
-  elevation: 5;
-  shadow-color: ${props => props.theme.textOnBackground};
-  shadow-opacity: ${scale(0.35)};
-  shadow-radius: ${scale(3.84)}px;
-  shadow-offset: 0px ${scale(3)}px;
 `;
 
 export const FailText = styled.Text<TThemedProps<{}>>`

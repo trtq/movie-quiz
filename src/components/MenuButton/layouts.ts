@@ -7,15 +7,10 @@ export const Button = styled.TouchableOpacity<TThemedProps<{ disabled: boolean }
   height: ${scale(60)}px;
   border-radius: ${scale(8)}px;
   background: ${props => (props.disabled ? props.theme.disabled : props.theme.primary)};
-  border: ${scale(1)}px solid ${props => props.theme.border};
+  border: ${scale(2)}px solid ${props => props.theme.border};
   opacity: ${props => (props.disabled ? 0.5 : 1)};
   justify-content: center;
   align-items: center;
-  elevation: 5;
-  shadow-color: ${props => (props.disabled ? props.theme.disabled : props.theme.textOnBackground)};
-  shadow-opacity: ${scale(0.35)};
-  shadow-radius: ${scale(3.84)}px;
-  shadow-offset: 0px ${scale(3)}px;
 `;
 
 export const ButtonText = styled.Text<TThemedProps<{}>>`

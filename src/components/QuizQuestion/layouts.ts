@@ -27,15 +27,10 @@ export const MovieCard = styled.View<TThemedProps<{}>>`
   height: ${verticalScale(257)}px;
   border-radius: ${scale(8)}px;
   background: ${props => props.theme.primary};
-  border: ${scale(1)}px solid ${props => props.theme.border};
+  border: ${scale(2)}px solid ${props => props.theme.border};
   justify-content: center;
   align-items: center;
   margin: ${verticalScale(20)}px 0;
-  elevation: 5;
-  shadow-color: ${props => props.theme.textOnBackground};
-  shadow-opacity: ${scale(0.35)};
-  shadow-radius: ${scale(3.84)}px;
-  shadow-offset: 0px ${scale(3)}px;
 `;
 
 export const MovieCardImage = styled(FastImage).attrs({
