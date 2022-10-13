@@ -2,6 +2,8 @@
 # MovieQuiz
 MovieQuiz is a game by Evgeny Ivanitsky (me) developed with React Native for mobile phones. During the game the player is shown a promotional photo or a still from a movie and several movie titles, one of which corresponds with the still. If the player pinpoints the correct title, the game moves on to the next still, if they don't, they lose a life, or, if the lives run out, they lose the game. The questions aren't prewritten, they are generated with the help of [The Movie Database](https://www.themoviedb.org/) And their API.
 
+You can checked MovieQuiz in the play store [here](https://play.google.com/store/apps/details?id=com.tortique.moviequiz)
+
 The game was developed as a showcase - i wanted to make something that would include the entire React Native development pipeline. It isn't the size of a huge commercial project, obviously, but it is still a fully featured React Native app, with such things as:
 - Application state handling with [**mobx-lite**](https://github.com/mobxjs/mobx-react-lite),
 - Routing with [**react-navigation**](https://reactnavigation.org/),
