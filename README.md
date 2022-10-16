@@ -48,7 +48,7 @@ This app was originally written in 2020. In september 2022 i decided to upgrade 
 Here's a breakdown of stuff i did:
 - 0.69.5 version of React-Native, rather than ancient 0.63.2.
 - **fully remade the way questions get pulled into the app**, vastly improving readability and safety. The way i did it back then is by using UseEffect as a sort of listener to changes to info in the store, rather thatn doing everything in the store and just showing the results in the component. Kind of a neat idea, but definitely a bad one. The method that the app uses now is much more conventional, readable and safe.
-- for animations, i **rewrote every animation using Reanimated 2** (old version was using Reanimated 1). This actually made a lot of code way less convoluted, especially thanks to [entering](https://docs.swmansion.com/react-native-reanimated/docs/api/LayoutAnimations/entryAnimations/) and (exiting)[https://docs.swmansion.com/react-native-reanimated/docs/api/LayoutAnimations/exitAnimations] animations.
+- for animations, i **rewrote every animation using Reanimated 2** (old version was using Reanimated 1). This actually made a lot of code way less convoluted, especially thanks to [entering](https://docs.swmansion.com/react-native-reanimated/docs/api/LayoutAnimations/entryAnimations/) and [exiting](https://docs.swmansion.com/react-native-reanimated/docs/api/LayoutAnimations/exitAnimations/) animations.
 - sectioned off **more logic into components**, in the old version there were too much logic in the code for screens - and too many were mobx observers.
 - **better use of hooks** overall.
 - react-navigation now works with **native stack**, giving a nice performance boost.
